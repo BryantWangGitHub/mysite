@@ -5,8 +5,7 @@ block append body
     div.hero-unit
       hi 欢迎光临
       p 这是一个神奇的类微博网站
-    include login
-    include reg        
+    include login       
   else
     p 欢迎您的到来 #{user.name}
     a(href='/u/#{user.name}' ) 
