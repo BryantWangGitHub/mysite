@@ -1,0 +1,17 @@
+extends layout
+block append body
+  body
+  if !user
+    div.hero-unit
+      hi 欢迎光临
+      p 这是一个神奇的类微博网站
+    include login
+    include reg        
+  else
+    p 欢迎您的到来 #{user.name}
+    a(href='/u/#{user.name}' ) 
+      img(src='/images/user.jpg' width="30" height="30" title='点击进入用户主页')
+    include say
+  include posts
+  script(type='text/javascript').
+    $('.carousel').carousel()

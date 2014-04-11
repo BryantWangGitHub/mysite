@@ -1,0 +1,31 @@
+extends layout
+block append body
+  div.hero-unit
+    form.form-horizontal(method='post',id='regform',action='/reg')
+      fieldset
+        legend 用户注册
+        .control-group
+          label.control-label(for='username') 用户名
+          .controls
+            | &#65532;&#65532;
+            input#username.input-xlarge(type='text',check-type='required char', name='username')
+            p.help-block 您登录用的ID
+        .control-group
+          label.control-label(for='username') 邮箱
+          .controls
+            | &#65532;&#65532;
+            input#username.input-xlarge(type='text',check-type='required mail', name='email')
+            p.help-block 便于联系以及通知
+        .control-group
+          label.control-label(for='password') 登录密码
+          .controls
+            | &#65532;
+            input#password.input-xlarge(type='password',check-type='required char', name='password')
+        .control-group
+          label.control-label(for='password-repeat') 重复密码
+          .controls
+            input#password-repeat.input-xlarge(type='password',check-type='required char', name='password-repeat')
+        .form-actions
+          button.btn.btn-primary(type='submit') 提交
+  script(type='text/javascript').
+      $('#regform').validation()

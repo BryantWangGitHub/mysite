@@ -1,0 +1,34 @@
+
+form(method="post",action="/post",id='sayform' ,class="well form-inline center" ,style="text-align: center;")
+  input(id="saytext",type="text" ,class="span8",check-type="required lengthMax", name="post")
+  button(class="btn-primary", href='#myModal', role='button', data-toggle='modal') 上传图片 
+  button(id='saybutton',type="submit", class="btn btn-success",data-loading-text='Loading...') 发言
+  #myModal.modal.hide.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+    .modal-header
+      button.close(type='button', data-dismiss='modal', aria-hidden='true') &times;
+      h3#myModalLabel 图片录入框
+    .modal-body
+      p 将您本次提交的图片链接拷贝至下列输入框内或点击上传按钮上传本地图片
+      #filecontainer.filecontainer
+        .header
+          strong#uploadDialogHeadlineStrong.title_status 请将文件拖放至框内
+          .sprite_new
+        #uploadItems
+      .modal-footer
+      button.btn(data-dismiss='modal',id='resetimg',onclick="return resetinputandimg('imgsrc')" ,aria-hidden='true') 取消
+      button.btn.btn-primary(data-loading-text='Loading...') 保存并发表
+    link(type='text/css', href='/stylesheets/upload.css', rel='stylesheet')
+    script(type='text/javascript', src='/javascripts/uploader/uploader.js')
+    script(type='text/javascript', src='/javascripts/uploader/uploaderQueue.js')
+    script(type='text/javascript', src='/javascripts/uploader/uploaderApp.js')
+    script(type='text/javascript', src='/javascripts/uploader.js')
+    script(type='text/javascript').
+      $('#sayform').validation()
+      $(function(){
+        bt = document.getElementById('resetimg');
+        bt.type='button';
+        var main=new uploaderApp.main('filecontainer');
+        main.init();
+      });
+    
+

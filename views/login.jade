@@ -1,0 +1,18 @@
+extends layout
+block append body
+  div.hero-unit    
+    form.form-horizontal(method='post',id='regform',action='/login')
+      fieldset
+        legend 用户登录 
+        .control-group
+          label.control-label(for='username') 用户名
+          .controls
+            input#username.input-xlarge(type='text',check-type='required',name='username')
+        .control-group
+          label.control-label(for='password') 密码
+          .controls
+            input#password.input-xlarge(type='password',check-type='required', name='password')
+        .form-actions
+          button.btn.btn-primary(type='submit') 登入
+  script(type='text/javascript').
+    $('#regform').validation()

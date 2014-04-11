@@ -1,0 +1,22 @@
+
+form(method="post",action="/post",id='sayform' ,class="well form-inline center" ,style="text-align: center;")
+  input(id="saytext",type="text" ,class="span8",check-type="required", name="post")
+  button(class="btn-primary", href='#myModal', role='button', data-toggle='modal') 外链图片 
+  button(id='saybutton',type="submit", class="btn btn-success",data-loading-text='Loading...') 发言
+  #myModal.modal.hide.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+    .modal-header
+      button.close(type='button', data-dismiss='modal', aria-hidden='true') &times;
+      h3#myModalLabel 图片录入框
+    .modal-body
+      p 将您本次提交的图片链接拷贝至下列输入框内
+      input(id='imglink',onblur="imginputblur('#imglink')",index='1',name='imgsrc' )
+    .modal-footer
+      button.btn(data-dismiss='modal',id='resetimg',onclick="return resetinputandimg('imgsrc')" ,aria-hidden='true') 取消外链
+      button.btn.btn-primary(data-loading-text='Loading...') 保存并发表
+    script(type='text/javascript').
+      $('#sayform').validation()
+      $(function(){
+        bt = document.getElementById('resetimg');
+        bt.type='button';
+      });
+

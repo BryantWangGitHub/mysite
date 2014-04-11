@@ -1,0 +1,42 @@
+div
+- for (var i in posts)
+  div(id='postid#{i}')
+    ul.thumbnails
+      - for (var index=0 ; index < posts[i].imgsrc.length;index++)
+        li.span4
+          div.thunmbnail
+            div.box
+              a(class="swipebox" ,href="#{posts[i].imgsrc[index]}",title='#{posts[i].post}') 
+                img(src='#{posts[i].imgsrc[index]}' ,alt='破图了- -',width="240" height="180")  
+
+    p(align='left' class='post-p' ) #{posts[i].post}
+    p(align='right') #{posts[i].time}
+    p
+      i.icon-heart
+        #{posts[i].greatid}
+    if user
+      body
+        .btn-group
+          a.btn.btn-mini(href='#')
+            i.icon-list
+          a.btn.btn-mini.dropdown-toggle(data-toggle='dropdown', href='#')
+            span.caret
+          ul.dropdown-menu
+            if user && user.name==posts[i].user
+              li
+                a(href='#',postid='#{posts[i].id}',onclick="deletepost('/deletepost','postid#{i}','#{posts[i].id}')")
+                  i.icon-trash
+                  | Delete
+            if user && user.name!=posts[i].user
+              li
+                a(href='#',postid='#{posts[i].id}',onclick="greatpost('/greatpost','postid#{i}','#{posts[i]}')")
+                  i.icon-heart
+                  | 点赞
+
+script(type='text/javascript').
+  $().ready(function(){
+     $(".swipebox").swipebox();
+  });
+            
+
+

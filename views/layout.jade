@@ -1,0 +1,66 @@
+doctype 5
+html
+  head 
+    title= title
+    link(rel='stylesheet' href='/stylesheets/bootstrap.css')
+    script(src="/javascripts/jquery.js")
+    script(src="/javascripts/bootstrap.js")
+    script(src="/javascripts/myfunction.js")
+    script(src="/javascripts/textcheck.js")
+    script(src="/javascripts/jquery.swipebox.min.js")
+    style(type="text/css").
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+    link(href="stylesheets/bootstrap-responsive.css",rel="stylesheet")
+    link(href="stylesheets/swipebox.css",rel="stylesheet")
+  style
+    .main-body {
+      background: #10bf98;
+      //background-image: -webkit-linear-gradient(top, #106398, #106398);
+    }
+    .post-p {
+      border-style: solid; 
+      border-width: medium medium medium medium;
+      border-color:#ffffff #ffffff #ffffff #ffffff ;
+      border-left-style: none;
+      border-right-style: none;
+      border-top-style: none;
+
+    }
+  body.main-body
+    div(class="navbar navbar-inverse navbar-fixed-top")
+      div( class="navbar-inner")
+        div(class="container")
+          a(class="btn btn-navbar" , data-toggle="collapse" , data-target=".nav-collapse")
+            span( class="icon-bar")
+            span( class="icon-bar")
+            span( class="icon-bar")
+          a(class="brand", href="/") mysite
+          div(class="nav-collapse")
+            ul(<ul class="nav")
+              li(class="active")
+                a(href="/")首页
+              if !user
+                li
+                  a(href="/login")登入
+                li
+                  a(href="/reg")注册
+              
+    div(id="container" , class="container")
+      - var rst = success
+      if rst.length > 0
+        div(class="alert alert-success")
+          p= rst
+      - var rst = error
+      if rst.length > 0 
+        div(class="alert alert-error") 
+          p= rst
+      block body
+      hr
+      footer
+        p
+      include form
+
+              

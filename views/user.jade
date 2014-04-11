@@ -1,0 +1,31 @@
+extends layout
+block append body
+    if user
+      body
+        .btn-group
+          a.btn.btn-primary(href='#')
+            i.icon-user.icon-white
+            | User #{user.name}
+          a.btn.btn-primary.dropdown-toggle(data-toggle='dropdown', href='#')
+            span.caret
+          ul.dropdown-menu
+            li
+              a(href='#')
+                i.icon-pencil
+                | Edit
+            li
+              a(href='#')
+                i.icon-trash
+                | Delete
+            li
+              a(href='#',onclick="actionto('/logout')")
+                i.icon-off
+                | 登出
+            li.divider
+            li
+              a(href='#')
+                i.i
+                | Make admin
+      include say 
+    include posts
+    

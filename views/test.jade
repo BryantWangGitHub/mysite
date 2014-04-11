@@ -1,0 +1,11 @@
+extends layout
+block append body
+  body test
+    div
+      form(method="post", enctype="multipart/form-data", action="/upload")
+        input(id='file',type='file',name='myfile',onchange="onslectimg('/upload','.file')") 
+        button(type='submit')
+    div
+      form(method="post", action="/img")
+        button(type='submit') trans
+      img(src='/userimg/4111-1ry6iuz.jpg')
